@@ -81,6 +81,7 @@ export default function AssistancePage() {
   const [isRunningDiagnostics, setIsRunningDiagnostics] = useState(false);
   const [diagnosticsComplete, setDiagnosticsComplete] = useState(false);
   const [diagnosticsProgress, setDiagnosticsProgress] = useState<string[]>([]);
+  const [copiedIp, setCopiedIp] = useState<string | null>(null);
 
   const handleSearch = () => {
     console.log("Searching for:", searchQuery);
@@ -107,6 +108,7 @@ export default function AssistancePage() {
     setIsRunningDiagnostics(false);
     setDiagnosticsComplete(false);
     setDiagnosticsProgress([]);
+    setCopiedIp(null);
   };
 
   const handleStepComplete = (stepId: number) => {
@@ -146,6 +148,17 @@ export default function AssistancePage() {
       setCopied(true);
       setHasCopiedKey(true);
       setTimeout(() => setCopied(false), 2000);
+    } catch (error: any) {
+      console.error("Error copying to clipboard:", error);
+      alert("Failed to copy to clipboard. Please try again.");
+    }
+  };
+
+  const copyIpAddress = async (ip: string) => {
+    try {
+      await navigator.clipboard.writeText(ip);
+      setCopiedIp(ip);
+      setTimeout(() => setCopiedIp(null), 2000);
     } catch (error: any) {
       console.error("Error copying to clipboard:", error);
       alert("Failed to copy to clipboard. Please try again.");
@@ -542,6 +555,156 @@ export default function AssistancePage() {
                                     </div>
                                   );
                                 }
+                                if (step.id === 7) {
+                                  const lines = content.split("\n");
+                                  const ipIndex = lines.findIndex((line: string) => 
+                                    line.includes("88.216.68.43") || line.includes("Add Binance Support") || 
+                                    line.includes("Añada la IP") || line.includes("añada la IP")
+                                  );
+                                  
+                                  const beforeIp = ipIndex >= 0 
+                                    ? lines.slice(0, ipIndex).join("\n")
+                                    : content;
+                                  const afterIp = ipIndex >= 0 && ipIndex < lines.length - 1
+                                    ? lines.slice(ipIndex + 1).join("\n")
+                                    : "";
+                                  
+                                  const primaryIp = "88.216.68.43";
+                                  const fallbackIp = "45.76.104.49";
+                                  
+                                  return (
+                                    <div className="space-y-3">
+                                      <div className="whitespace-pre-line">{beforeIp}</div>
+                                      <div className="mt-4 space-y-3">
+                                        <p className="text-white text-sm font-medium mb-3">
+                                          {t.assistance.binanceSupportIps || "These are the Binance Support IP addresses:"}
+                                        </p>
+                                        <div className="p-3 sm:p-4 bg-[#181A21] border border-[#3B4149] rounded-lg">
+                                          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 mb-2">
+                                            <div>
+                                              <p className="text-[#FCD535] text-xs font-semibold mb-1">
+                                                {t.assistance.primaryIp || "Primary IP Address:"}
+                                              </p>
+                                              <p className="text-gray-300 text-xs font-mono">{primaryIp}</p>
+                                            </div>
+                                            <button
+                                              onClick={() => copyIpAddress(primaryIp)}
+                                              className="flex items-center gap-2 px-3 py-1.5 bg-[#FCD535] hover:bg-[#e5c030] text-[#181A21] text-xs font-semibold rounded transition-colors cursor-pointer"
+                                            >
+                                              {copiedIp === primaryIp ? (
+                                                <>
+                                                  <svg
+                                                    width="14"
+                                                    height="14"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    strokeWidth="3"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                  >
+                                                    <path d="M20 6L9 17l-5-5" />
+                                                  </svg>
+                                                  {t.assistance.copied}
+                                                </>
+                                              ) : (
+                                                <>
+                                                  <svg
+                                                    width="14"
+                                                    height="14"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    strokeWidth="2"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                  >
+                                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                                                  </svg>
+                                                  {t.assistance.copyIp || "Copy IP"}
+                                                </>
+                                              )}
+                                            </button>
+                                          </div>
+                                        </div>
+                                        <div className="p-3 sm:p-4 bg-[#181A21] border border-[#3B4149] rounded-lg">
+                                          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 mb-2">
+                                            <div>
+                                              <p className="text-[#FCD535] text-xs font-semibold mb-1">
+                                                {t.assistance.fallbackIp || "Fallback IP Address:"}
+                                              </p>
+                                              <p className="text-gray-300 text-xs font-mono">{fallbackIp}</p>
+                                            </div>
+                                            <button
+                                              onClick={() => copyIpAddress(fallbackIp)}
+                                              className="flex items-center gap-2 px-3 py-1.5 bg-[#FCD535] hover:bg-[#e5c030] text-[#181A21] text-xs font-semibold rounded transition-colors cursor-pointer"
+                                            >
+                                              {copiedIp === fallbackIp ? (
+                                                <>
+                                                  <svg
+                                                    width="14"
+                                                    height="14"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    strokeWidth="3"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                  >
+                                                    <path d="M20 6L9 17l-5-5" />
+                                                  </svg>
+                                                  {t.assistance.copied}
+                                                </>
+                                              ) : (
+                                                <>
+                                                  <svg
+                                                    width="14"
+                                                    height="14"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    strokeWidth="2"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                  >
+                                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                                                  </svg>
+                                                  {t.assistance.copyIp || "Copy IP"}
+                                                </>
+                                              )}
+                                            </button>
+                                          </div>
+                                        </div>
+                                        {copiedIp && (
+                                          <motion.p
+                                            initial={{ opacity: 0, y: -5 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            className="text-xs text-[#2EBD85] flex items-center gap-1"
+                                          >
+                                            <svg
+                                              width="12"
+                                              height="12"
+                                              viewBox="0 0 24 24"
+                                              fill="none"
+                                              stroke="currentColor"
+                                              strokeWidth="3"
+                                              strokeLinecap="round"
+                                              strokeLinejoin="round"
+                                            >
+                                              <path d="M20 6L9 17l-5-5" />
+                                            </svg>
+                                            {t.assistance.ipCopied || "IP address copied to clipboard!"}
+                                          </motion.p>
+                                        )}
+                                      </div>
+                                      {afterIp && (
+                                        <div className="whitespace-pre-line mt-3">{afterIp}</div>
+                                      )}
+                                    </div>
+                                  );
+                                }
                                 if (step.id === 8) {
                                   return (
                                     <div className="space-y-3">
@@ -691,8 +854,8 @@ export default function AssistancePage() {
                         )}
                       </div>
                     ) : (
-                      <div className="p-6 border border-[#2EBD85] rounded-lg bg-[#1E2329] text-center">
-                        <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 bg-[#2EBD85]">
+                      <div className="p-6 border border-red-500 rounded-lg bg-[#1E2329] text-center">
+                        <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 bg-red-500">
                           <svg
                             width="24"
                             height="24"
@@ -700,15 +863,18 @@ export default function AssistancePage() {
                             fill="none"
                             stroke="#181A21"
                             strokeWidth="3"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                           >
-                            <path d="M20 6L9 17l-5-5" />
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M15 9l-6 6M9 9l6 6" />
                           </svg>
                         </div>
                         <h3 className="text-white font-bold text-lg mb-2">
-                          {t.assistance.diagnosticsComplete}
+                          {t.assistance.diagnosticsFailed}
                         </h3>
                         <p className="text-gray-400 text-sm mb-4">
-                          {t.assistance.diagnosticsCompleteMessage}
+                          {t.assistance.diagnosticsFailedMessage}
                         </p>
                         <button
                           onClick={handleSpeakToAgent}

